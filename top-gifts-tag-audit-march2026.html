@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Top Gifts Tag Audit &mdash; March 2026 Data</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f6f8;color:#1a1a2e}
+  .header{background:linear-gradient(135deg,#6a00f4,#c800a1);color:white;padding:28px 40px}
+  .header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+  .header .period{font-size:14px;font-weight:600;opacity:.95;margin-top:6px}
+  .header .meta{font-size:12px;opacity:.8;margin-top:3px;line-height:1.6}
+  .container{max-width:1100px;margin:0 auto;padding:28px 20px}
+  .summary-box{background:white;border-radius:12px;padding:20px 24px;margin-bottom:28px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+  .summary-box h2{font-size:13px;color:#555;margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
+  .kpi-row{display:flex;gap:14px;margin-bottom:20px}
+  .kpi{flex:1;background:#f8f9ff;border-radius:8px;padding:14px 16px;text-align:center}
+  .kpi .num{font-size:34px;font-weight:800}.kpi .label{font-size:11px;color:#888;margin-top:3px}
+  .kpi.add .num{color:#6a00f4}.kpi.remove .num{color:#e53e3e}.kpi.total .num{color:#2d7d9a}
+  table.summary-table{width:100%;border-collapse:collapse}
+  table.summary-table th{background:#f0f0f8;padding:9px 12px;text-align:left;font-size:12px;color:#555}
+  table.summary-table td{padding:8px 12px;border-bottom:1px solid #eee;font-size:13px}
+  .num{text-align:center;font-weight:600}.alert{color:#c53030}
+  .nav{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+  .nav a{text-decoration:none;background:white;border:1px solid #ddd;border-radius:7px;padding:7px 14px;font-size:12px;color:#333;transition:all .15s}
+  .nav a:hover{background:#6a00f4;color:white;border-color:#6a00f4}
+  .country-section{margin-bottom:32px;scroll-margin-top:16px}
+  .country-header{font-size:18px;font-weight:700;padding:12px 18px;background:white;border-radius:10px 10px 0 0;border-bottom:3px solid #6a00f4;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+  .check-block{background:white;padding:18px 22px;margin-top:2px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .check-block:last-child{border-radius:0 0 10px 10px}
+  .check-header{font-size:14px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .check-desc{font-size:12px;color:#666;margin-bottom:12px}
+  .check1-ok,.check2-ok{background:#f0fff4}.check1-ok .check-header,.check2-ok .check-header{color:#276749}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead tr{background:#f7f7fb}
+  th{padding:8px 10px;text-align:left;font-weight:600;color:#555;border-bottom:2px solid #e8e8f0}
+  td{padding:7px 10px;border-bottom:1px solid #f0f0f8;vertical-align:top}
+  tr:hover{background:#fafafe}
+  a{color:#6a00f4;text-decoration:none}a:hover{text-decoration:underline}
+  code{background:#f0f0f8;padding:2px 5px;border-radius:3px;font-size:10px;color:#555}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700}
+  .badge-add{background:#ebf4ff;color:#2b6cb0}.badge-remove{background:#fff5f5;color:#c53030}.badge-ok{background:#f0fff4;color:#276749}
+  .tag-conflict{font-family:monospace;font-size:10px;color:#c53030}
+  .methodology{background:white;border-radius:10px;padding:18px 22px;margin-top:8px;font-size:12px;color:#555;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .methodology h3{font-size:13px;font-weight:700;margin-bottom:8px;color:#333}
+  .methodology ul{padding-left:18px;line-height:1.9}
+  .gsheet-box{background:white;border-radius:12px;padding:24px 28px;margin-top:32px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-left:5px solid #6a00f4}
+  .gsheet-box h2{font-size:16px;font-weight:700;color:#333;margin-bottom:8px}
+  .gsheet-box p{font-size:13px;color:#555;margin-bottom:16px;line-height:1.6}
+  .gsheet-btn{display:inline-block;background:#6a00f4;color:white;text-decoration:none;padding:11px 24px;border-radius:8px;font-size:13px;font-weight:700;transition:background .15s}
+  .gsheet-btn:hover{background:#5500c8;color:white;text-decoration:none}
+  .gsheet-columns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .gsheet-col{background:#f0ecff;color:#4b0082;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600}
+  .footer{text-align:center;color:#aaa;font-size:11px;padding:28px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>&#127873; Top Gifts Tag Audit</h1>
+  <div class="period">&#128197; Data period: March 2026 (full month) &nbsp;&bull;&nbsp; Run: April 2026</div>
+  <div class="meta">Source: L3 BQ deal_level_gift_metrics + L2 BQ merchandising_tags_deal_id &nbsp;&bull;&nbsp; Markets: US, UK, DE, ES, FR, PL &nbsp;&bull;&nbsp; Top 100 deals per market by gift margin</div>
+</div>
+
+<div class="container">
+
+  <div class="summary-box">
+    <h2>Executive Summary</h2>
+    <div class="kpi-row">
+      <div class="kpi add"><div class="num">28</div><div class="label">Deals missing top-gifts tag<br>(CHECK 1 &mdash; ADD)</div></div>
+      <div class="kpi remove"><div class="num">16</div><div class="label">Deals with tag conflict<br>(CHECK 2 &mdash; REMOVE)</div></div>
+      <div class="kpi total"><div class="num">600</div><div class="label">Total deals audited<br>(Top 100 &times; 6 markets)</div></div>
+    </div>
+    <table class="summary-table">
+      <thead><tr><th>Market</th><th>Check 1: ADD</th><th>Check 2: REMOVE</th></tr></thead>
+      <tbody><tr><td>🇺🇸 US</td><td class='num alert'>4</td><td class='num alert'>14</td></tr>
+<tr><td>🇬🇧 UK</td><td class='num alert'>7</td><td class='num'>0</td></tr>
+<tr><td>🇩🇪 DE</td><td class='num alert'>7</td><td class='num'>0</td></tr>
+<tr><td>🇪🇸 ES</td><td class='num alert'>5</td><td class='num alert'>1</td></tr>
+<tr><td>🇫🇷 FR</td><td class='num alert'>3</td><td class='num'>0</td></tr>
+<tr><td>🇵🇱 PL</td><td class='num alert'>2</td><td class='num alert'>1</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="nav"><a href="#country-US">🇺🇸 US</a><a href="#country-UK">🇬🇧 UK</a><a href="#country-DE">🇩🇪 DE</a><a href="#country-ES">🇪🇸 ES</a><a href="#country-FR">🇫🇷 FR</a><a href="#country-PL">🇵🇱 PL</a></div>
+
+  <div class="country-section" id="country-US">
+      <div class="country-header">🇺🇸 US &nbsp;<span class="badge badge-add">4 ADD</span> <span class="badge badge-remove">14 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">4 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.com/deals/world-office-standard-2024" target="_blank">#33 PC Software</a></td><td>$3,491</td><td><code>006Uj00000K2ziDIAR</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/gl-spartan-race-2026" target="_blank">#37 Obstacle Course</a></td><td>$3,202</td><td><code>006Uj00000XUNLyIAP</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/microsoft-office-standard-2024-pc-mac-lc" target="_blank">#42 PC Software</a></td><td>$2,822</td><td><code>006Uj00000T4iEgIAJ</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/aaa-auto-club-enterprises" target="_blank">#81 Roadside Assistance / Towing</a></td><td>$1,811</td><td><code>006Uj00000OokZhIAJ</code></td></tr></tbody></table></div><div class="check-block check2">
+          <div class="check-header">&#9888; Check 2 &mdash; REMOVE not-top-gifts &nbsp;<span class="badge badge-remove">14 deals</span></div>
+          <p class="check-desc">In Top 100 but carrying <code>not-top-gifts</code> &mdash; direct conflict. Action: remove <code>not-top-gifts</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Current Tags</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.com/deals/world-wide-electronic-software-delivery-llc-mycodes24" target="_blank">#2 PC Software</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$24,029</td><td><code>006Uj00000DkimaIAB</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/gl-universal-orlando-59" target="_blank">#9 Amusement Park</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$7,336</td><td><code>0063c00001Fmui6AAB</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/wildlife-world-zoo-aquarium-18" target="_blank">#17 Zoo / Animal Park</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$5,456</td><td><code>0063c00001IsnjMAAR</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/n-costco-membership" target="_blank">#21 Membership Club</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$4,672</td><td><code>0063c00001P2lCzAAJ</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/spa-world-26" target="_blank">#23 Spa - Day Pass</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$4,373</td><td><code>006C000001BjSMrIAN</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/jcpenney-portraits-1552-marketplace" target="_blank">#24 Photo Shoot - Studio</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$4,299</td><td><code>0063c00001FkCFJAA3</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/license-tom-llc-2-1" target="_blank">#48 PC Software</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$2,688</td><td><code>006Uj00000DtPW9IAN</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/n-photoaffections-cards-2-chicago-1" target="_blank">#60 Custom - Greeting Cards</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$2,237</td><td><code>0063c00001DsHVRAA3</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/the-play-station-1-4" target="_blank">#67 Amusement Park</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$2,071</td><td><code>006Uj00000EWeDZIA1</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/pirates-dinner-adventure-orlando-florida" target="_blank">#75 Dinner - Theater</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$1,932</td><td><code>006Uj000004hKsPIAU</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/microsoft-office-2024-home-business" target="_blank">#86 PC Software</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$1,786</td><td><code>006Uj00000Ezr0vIAB</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/n-y-c-skylinetours-cruises-llcx" target="_blank">#88 Tour - Boat</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$1,756</td><td><code>0063c00001Di1NtAAJ</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/campaign-0-718188752" target="_blank">#93 PC Software</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$1,713</td><td><code>006Hr00001KAWMFIA5</code></td></tr>
+<tr><td><a href="https://groupon.com/deals/smoky-mountain-alpine-coaster-1" target="_blank">#99 Amusement Park</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$1,648</td><td><code>0063c00001ErIYaAAN</code></td></tr></tbody></table></div></div><div class="country-section" id="country-UK">
+      <div class="country-header">🇬🇧 UK &nbsp;<span class="badge badge-add">7 ADD</span> <span class="badge badge-remove">0 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">7 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.co.uk/deals/toby-carvery-3-1" target="_blank">#21 Sunday Roast</a></td><td>$1,624</td><td><code>006TU00000KPfxKYAT</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/get-software-deals-8" target="_blank">#31 PC Software</a></td><td>$1,350</td><td><code>006Uj00000MMExJIAX</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/technivision-australia-parent" target="_blank">#36 PC Software</a></td><td>$1,173</td><td><code>006Uj00000WJEEcIAP</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/get-software-deals-ltd-4" target="_blank">#42 PC Software</a></td><td>$1,048</td><td><code>006Uj00000HYo8gIAD</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/rc-software" target="_blank">#48 PC Software</a></td><td>$946</td><td><code>006Uj00000NxOU6IAN</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/nordvpn-9" target="_blank">#75 Internet Access - High Speed / Dial-up</a></td><td>$731</td><td><code>006Uj000003TA77IAG</code></td></tr>
+<tr><td><a href="https://groupon.co.uk/deals/vue-4-13" target="_blank">#88 Cinema / Movie Theater</a></td><td>$659</td><td><code>006TU00000K3jptYAB</code></td></tr></tbody></table></div><div class="check-block check2-ok"><div class="check-header">&#10003; Check 2 &mdash; No not-top-gifts conflicts &nbsp;<span class="badge badge-ok">OK</span></div></div></div><div class="country-section" id="country-DE">
+      <div class="country-header">🇩🇪 DE &nbsp;<span class="badge badge-add">7 ADD</span> <span class="badge badge-remove">0 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">7 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.de/deals/kinopolis-7" target="_blank">#14 Cinema / Movie Theater</a></td><td>$1,081</td><td><code>006TU00000JXeOjYAL</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/technivision-germany-1" target="_blank">#16 PC Software</a></td><td>$1,049</td><td><code>006Uj00000WGS5xIAH</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/govolta" target="_blank">#19 Tram / Train</a></td><td>$902</td><td><code>006TU00000Lf34HYAR</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/get-software-deals-6" target="_blank">#26 PC Software</a></td><td>$798</td><td><code>006Uj00000UbZITIA3</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/villa-rodizio-berlin-9-10" target="_blank">#53 Brazilian</a></td><td>$478</td><td><code>006Uj00000VDUEXIA5</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/bon-dia-im-hotel-palace-berlin-1" target="_blank">#66 European Breakfast</a></td><td>$412</td><td><code>006Uj00000Wq3FXIAZ</code></td></tr>
+<tr><td><a href="https://groupon.de/deals/restaurant-jadou" target="_blank">#80 Middle Eastern</a></td><td>$357</td><td><code>006Uj00000Y3loPIAR</code></td></tr></tbody></table></div><div class="check-block check2-ok"><div class="check-header">&#10003; Check 2 &mdash; No not-top-gifts conflicts &nbsp;<span class="badge badge-ok">OK</span></div></div></div><div class="country-section" id="country-ES">
+      <div class="country-header">🇪🇸 ES &nbsp;<span class="badge badge-add">5 ADD</span> <span class="badge badge-remove">1 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">5 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.es/deals/teatro-las-vegas" target="_blank">#18 Dinner - Dance Show</a></td><td>$1,920</td><td><code>006Uj00000KHyqgIAD</code></td></tr>
+<tr><td><a href="https://groupon.es/deals/technivision-spain" target="_blank">#31 PC Software</a></td><td>$1,326</td><td><code>006Uj00000WGQs9IAH</code></td></tr>
+<tr><td><a href="https://groupon.es/deals/cine-yelmo-9" target="_blank">#57 Cinema / Movie Theater</a></td><td>$776</td><td><code>006TU00000LvyeTYAR</code></td></tr>
+<tr><td><a href="https://groupon.es/deals/restaurante-albufera" target="_blank">#67 Mediterranean</a></td><td>$691</td><td><code>0063c00001Djx75AAB</code></td></tr>
+<tr><td><a href="https://groupon.es/deals/cuchillos-don-luis-2" target="_blank">#84 Knife Skills Course</a></td><td>$619</td><td><code>006TU00000JcuO2YAJ</code></td></tr></tbody></table></div><div class="check-block check2">
+          <div class="check-header">&#9888; Check 2 &mdash; REMOVE not-top-gifts &nbsp;<span class="badge badge-remove">1 deal</span></div>
+          <p class="check-desc">In Top 100 but carrying <code>not-top-gifts</code> &mdash; direct conflict. Action: remove <code>not-top-gifts</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Current Tags</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.es/deals/cuchillos-don-luis-2" target="_blank">#84 Knife Skills Course</a></td><td><span class='tag-conflict'>not-top-gifts</span></td><td>$619</td><td><code>006TU00000JcuO2YAJ</code></td></tr></tbody></table></div></div><div class="country-section" id="country-FR">
+      <div class="country-header">🇫🇷 FR &nbsp;<span class="badge badge-add">3 ADD</span> <span class="badge badge-remove">0 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">3 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.fr/deals/colorland-20-9" target="_blank">#51 Custom Printing - Photobook</a></td><td>$661</td><td><code>006Uj00000QKaUzIAL</code></td></tr>
+<tr><td><a href="https://groupon.fr/deals/org-cle-produit-vie-office-2024-professional-ou-standard" target="_blank">#57 Software - Office Application Software</a></td><td>$614</td><td><code>006Uj00000OFGxtIAH</code></td></tr>
+<tr><td><a href="https://groupon.fr/deals/technivision-france" target="_blank">#63 PC Software</a></td><td>$595</td><td><code>006Uj00000WGHgnIAH</code></td></tr></tbody></table></div><div class="check-block check2-ok"><div class="check-header">&#10003; Check 2 &mdash; No not-top-gifts conflicts &nbsp;<span class="badge badge-ok">OK</span></div></div></div><div class="country-section" id="country-PL">
+      <div class="country-header">🇵🇱 PL &nbsp;<span class="badge badge-add">2 ADD</span> <span class="badge badge-remove">1 REMOVE</span></div>
+      <div class="check-block check1">
+          <div class="check-header">&#10003; Check 1 &mdash; ADD top-gifts-v2 &nbsp;<span class="badge badge-add">2 deals</span></div>
+          <p class="check-desc">In Top 100 by gift margin but missing both <code>top-gifts-v2</code> and <code>manual-top-gifts</code>. Action: add <code>top-gifts-v2</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.pl/deals/wilenska-beauty-clinic" target="_blank">#16 Facelift - Non-Surgical</a></td><td>$731</td><td><code>006TU00000KTXTKYA5</code></td></tr>
+<tr><td><a href="https://groupon.pl/deals/rapid-key-store-4" target="_blank">#99 PC Software</a></td><td>$279</td><td><code>006Uj00000NUS85IAH</code></td></tr></tbody></table></div><div class="check-block check2">
+          <div class="check-header">&#9888; Check 2 &mdash; REMOVE not-top-gifts &nbsp;<span class="badge badge-remove">1 deal</span></div>
+          <p class="check-desc">In Top 100 but carrying <code>not-top-gifts</code> &mdash; direct conflict. Action: remove <code>not-top-gifts</code>.</p>
+          <table><thead><tr><th>Deal</th><th>Current Tags</th><th>Gift Margin (March 2026)</th><th>Opportunity ID</th></tr></thead>
+          <tbody><tr><td><a href="https://groupon.pl/deals/rezonans-fc-1" target="_blank">#33 MRI Scan</a></td><td><span class='tag-conflict'>manual-top-gifts, not-top-gifts, top-gifts-v2</span></td><td>$544</td><td><code>006Uj00000IvTm5IAF</code></td></tr></tbody></table></div></div>
+
+  <div class="methodology">
+    <h3>&#128203; Methodology</h3>
+    <ul>
+      <li><strong>Scope:</strong> Top 100 deals per market (US, UK, DE, ES, FR, PL) by total gift margin, March 2026 full month</li>
+      <li><strong>Check 1 (ADD):</strong> Deal has neither <code>top-gifts-v2</code> nor <code>manual-top-gifts</code> &rarr; add <code>top-gifts-v2</code></li>
+      <li><strong>Check 2 (REMOVE):</strong> Deal has <code>not-top-gifts</code> while in Top 100 &rarr; tag conflict, remove <code>not-top-gifts</code></li>
+      <li><strong>Excluded PDS:</strong> Injection (Botox / Dysport / Dermal Filler / B12 / Xieomin / Restylane), Drug &mdash; Diet / Weight Loss, Hangover IV, Hydro Colon Therapy</li>
+    </ul>
+  </div>
+
+  <div class="gsheet-box">
+    <h2>&#128202; Complete Deal List &mdash; All 600 Deals (Top 100 per Market)</h2>
+    <p>Full ranked list for all 6 markets with deal permalink, PDS, Opportunity ID, gift margin, and tag action status. Open the Google Sheet to filter, sort, and cross-reference as needed.</p>
+    <a class="gsheet-btn" href="PASTE_GOOGLE_SHEET_LINK_HERE" target="_blank">&#128279; Open Google Sheet</a>
+    <div class="gsheet-columns">
+      <span class="gsheet-col">Rank</span>
+      <span class="gsheet-col">Market</span>
+      <span class="gsheet-col">PDS</span>
+      <span class="gsheet-col">Permalink</span>
+      <span class="gsheet-col">Opportunity ID</span>
+      <span class="gsheet-col">Gift Margin (March 2026)</span>
+      <span class="gsheet-col">Tag Action</span>
+    </div>
+  </div>
+
+</div>
+<div class="footer">Groupon Gifting &nbsp;&bull;&nbsp; Top Gifts Tag Audit &nbsp;&bull;&nbsp; Data: March 2026 &nbsp;&bull;&nbsp; Run: April 2026</div>
+</body>
+</html>

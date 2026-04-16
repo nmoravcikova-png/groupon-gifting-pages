@@ -1,0 +1,45 @@
+Check,Action,Country,Rank,PDS,Permalink,Opportunity ID,"Gift Margin (Mar 2026, USD)"
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,14,Cinema / Movie Theater,https://groupon.de/deals/kinopolis-7,006TU00000JXeOjYAL,1080.73
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,16,PC Software,https://groupon.de/deals/technivision-germany-1,006Uj00000WGS5xIAH,1048.53
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,19,Tram / Train,https://groupon.de/deals/govolta,006TU00000Lf34HYAR,901.75
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,26,PC Software,https://groupon.de/deals/get-software-deals-6,006Uj00000UbZITIA3,798.48
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,53,Brazilian,https://groupon.de/deals/villa-rodizio-berlin-9-10,006Uj00000VDUEXIA5,478.5
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,66,European Breakfast,https://groupon.de/deals/bon-dia-im-hotel-palace-berlin-1,006Uj00000Wq3FXIAZ,411.95
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,DE,80,Middle Eastern,https://groupon.de/deals/restaurant-jadou,006Uj00000Y3loPIAR,357.14
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,ES,18,Dinner - Dance Show,https://groupon.es/deals/teatro-las-vegas,006Uj00000KHyqgIAD,1920.48
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,ES,31,PC Software,https://groupon.es/deals/technivision-spain,006Uj00000WGQs9IAH,1325.96
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,ES,57,Cinema / Movie Theater,https://groupon.es/deals/cine-yelmo-9,006TU00000LvyeTYAR,776.01
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,ES,67,Mediterranean,https://groupon.es/deals/restaurante-albufera,0063c00001Djx75AAB,691.43
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,ES,84,Knife Skills Course,https://groupon.es/deals/cuchillos-don-luis-2,006TU00000JcuO2YAJ,619.08
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,FR,51,Custom Printing - Photobook,https://groupon.fr/deals/colorland-20-9,006Uj00000QKaUzIAL,660.6
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,FR,57,Software - Office Application Software,https://groupon.fr/deals/org-cle-produit-vie-office-2024-professional-ou-standard,006Uj00000OFGxtIAH,614.39
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,FR,63,PC Software,https://groupon.fr/deals/technivision-france,006Uj00000WGHgnIAH,595.35
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,PL,16,Facelift - Non-Surgical,https://groupon.pl/deals/wilenska-beauty-clinic,006TU00000KTXTKYA5,731.19
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,PL,99,PC Software,https://groupon.pl/deals/rapid-key-store-4,006Uj00000NUS85IAH,278.94
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,21,Sunday Roast,https://groupon.co.uk/deals/toby-carvery-3-1,006TU00000KPfxKYAT,1623.72
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,31,PC Software,https://groupon.co.uk/deals/get-software-deals-8,006Uj00000MMExJIAX,1350.42
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,36,PC Software,https://groupon.co.uk/deals/technivision-australia-parent,006Uj00000WJEEcIAP,1172.57
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,42,PC Software,https://groupon.co.uk/deals/get-software-deals-ltd-4,006Uj00000HYo8gIAD,1047.89
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,48,PC Software,https://groupon.co.uk/deals/rc-software,006Uj00000NxOU6IAN,946.48
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,75,Internet Access - High Speed / Dial-up,https://groupon.co.uk/deals/nordvpn-9,006Uj000003TA77IAG,730.7
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,UK,88,Cinema / Movie Theater,https://groupon.co.uk/deals/vue-4-13,006TU00000K3jptYAB,659.28
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,US,33,PC Software,https://groupon.com/deals/world-office-standard-2024,006Uj00000K2ziDIAR,3490.74
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,US,37,Obstacle Course,https://groupon.com/deals/gl-spartan-race-2026,006Uj00000XUNLyIAP,3201.95
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,US,42,PC Software,https://groupon.com/deals/microsoft-office-standard-2024-pc-mac-lc,006Uj00000T4iEgIAJ,2822.18
+Check 1 — ADD top-gifts-v2,ADD top-gifts-v2,US,81,Roadside Assistance / Towing,https://groupon.com/deals/aaa-auto-club-enterprises,006Uj00000OokZhIAJ,1810.76
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,ES,84,Knife Skills Course,https://groupon.es/deals/cuchillos-don-luis-2,006TU00000JcuO2YAJ,619.08
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,PL,33,MRI Scan,https://groupon.pl/deals/rezonans-fc-1,006Uj00000IvTm5IAF,543.8
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,2,PC Software,https://groupon.com/deals/world-wide-electronic-software-delivery-llc-mycodes24,006Uj00000DkimaIAB,24029.11
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,9,Amusement Park,https://groupon.com/deals/gl-universal-orlando-59,0063c00001Fmui6AAB,7335.57
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,17,Zoo / Animal Park,https://groupon.com/deals/wildlife-world-zoo-aquarium-18,0063c00001IsnjMAAR,5456.3
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,21,Membership Club,https://groupon.com/deals/n-costco-membership,0063c00001P2lCzAAJ,4672.03
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,23,Spa - Day Pass,https://groupon.com/deals/spa-world-26,006C000001BjSMrIAN,4372.78
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,24,Photo Shoot - Studio,https://groupon.com/deals/jcpenney-portraits-1552-marketplace,0063c00001FkCFJAA3,4298.75
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,48,PC Software,https://groupon.com/deals/license-tom-llc-2-1,006Uj00000DtPW9IAN,2688.41
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,60,Custom - Greeting Cards,https://groupon.com/deals/n-photoaffections-cards-2-chicago-1,0063c00001DsHVRAA3,2236.56
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,67,Amusement Park,https://groupon.com/deals/the-play-station-1-4,006Uj00000EWeDZIA1,2071.23
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,75,Dinner - Theater,https://groupon.com/deals/pirates-dinner-adventure-orlando-florida,006Uj000004hKsPIAU,1931.53
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,86,PC Software,https://groupon.com/deals/microsoft-office-2024-home-business,006Uj00000Ezr0vIAB,1785.67
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,88,Tour - Boat,https://groupon.com/deals/n-y-c-skylinetours-cruises-llcx,0063c00001Di1NtAAJ,1755.54
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,93,PC Software,https://groupon.com/deals/campaign-0-718188752,006Hr00001KAWMFIA5,1712.54
+Check 2 — REMOVE not-top-gifts,REMOVE not-top-gifts,US,99,Amusement Park,https://groupon.com/deals/smoky-mountain-alpine-coaster-1,0063c00001ErIYaAAN,1648.27
